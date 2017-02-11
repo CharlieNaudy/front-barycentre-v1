@@ -11,9 +11,10 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-register',
   templateUrl: 'register.html'
 })
+
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
   register() {
   }
@@ -21,5 +22,4 @@ export class RegisterPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
-
 }
