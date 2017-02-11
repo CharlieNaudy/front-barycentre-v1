@@ -7,12 +7,13 @@ import { TabsPage } from '../tabs/tabs';
   selector: 'page-login',
   templateUrl: 'login.html'
 })
+
 export class LoginPage {
 
   constructor(public navCtrl: NavController) {}
 
   login() {
-    this.navCtrl.push(TabsPage);
+    this.navCtrl.setRoot(TabsPage);
   }
 }
 
