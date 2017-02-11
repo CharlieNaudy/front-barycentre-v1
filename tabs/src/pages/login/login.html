@@ -6,5 +6,15 @@
 
 <ion-content padding>
   <h2>Welcome to Barycentre!</h2>
+   <ion-item>
+    <ion-label floating>Login</ion-label>
+    <ion-input type="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
   <button (click)="login()" ion-button>Login</button>
+  <button (click)="to_register()" ion-button>New? Register!</button>
 </ion-content>
