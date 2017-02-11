@@ -12,12 +12,18 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   rootPage = LoginPage;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platformn public auth:Auth) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+
+      if(this.auth.isAuthenticated()) {
+        this.rootPage = HomePage;
+      } else {
+        this.rootPage = LoginPage;
+      }
     });
   }
 }
