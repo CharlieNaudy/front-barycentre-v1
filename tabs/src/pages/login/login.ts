@@ -23,40 +23,35 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) { }
 
   login() {
-      this.http.post('https://myApi/api/v1/authenticate', {
-      email: this.email,
-      password: this.password
-    }, function(messageJson){
-      if (messageJson.error){
-        let alert = this.alertCtrl.create({
-          title: 'Erreur',
-          subTitle: messageJson.error,
-          buttons: ['OK']
-        });
+    this.http.post('https://myApi/api/v1/authenticate', { email: this.email, password: this.password }, function(messageJson) {
+      if (messageJson.error) {
+        let alert = this.alertCtrl.create({ title: 'Erreur', subTitle: messageJson.error, buttons: ['OK'] });
         alert.present();
       }
-      else if (messageJson.token){
+      else if (messageJson.token) {
         window.localStorage['login'] = this.email;
         window.localStorage['authToken'] = messageJson.token;
-        let alert = this.alertCtrl.create({
-          title: 'Succès',
-          subTitle: 'Connexion réussie',
-          buttons: ['OK']
-        });
+        let alert = this.alertCtrl.create({ title: 'Succès', subTitle: 'Connexion réussie', buttons: ['OK'] });
         alert.present();
         this.navCtrl.setRoot(TabsPage);
       }
     })
 
+  }
+
+  getRegister() {
+    this.navCtrl.push(RegisterPage);
+  }
+}
 
 /*
       .then(function(response) {
       window.localStorage['authToken'] = response.data.token;
     }, function(error) {
       alert('Incorrect password - please try again.')
-      console.log(error);       
+      console.log(error);
     });
-    
+
     let alert = this.alertCtrl.create({
       title: 'It works bitch!',
       subTitle: 'email: ' + this.logData.email + '  password: ' + this.logData.password,
@@ -64,9 +59,3 @@ export class LoginPage {
     });
     alert.present();
     */
-  }
-
-  to_register() {
-    this.navCtrl.push(RegisterPage);
-  }
-}
