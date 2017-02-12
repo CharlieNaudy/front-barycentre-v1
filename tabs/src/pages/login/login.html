@@ -10,12 +10,12 @@
 
   <ion-item>
     <ion-label floating>Login</ion-label>
-    <ion-input type="email" [(ngModel)]="email"></ion-input>
+    <ion-input type="email" [(ngModel)]="logData.email"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="password"></ion-input>
+    <ion-input type="password" [(ngModel)]="logData.password"></ion-input>
   </ion-item>
 
   <button (click)="login()" ion-button>Login</button>

@@ -17,23 +17,23 @@
   <h2>Welcome to Barycentre!</h2>
   <ion-item>
     <ion-label floating>First Name</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="firstName"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Last Name</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="lastName"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Address (you'll be able to change later!)</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="address"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Email (this will be your login)</ion-label>
-    <ion-input type="email"></ion-input>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Choose password</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
   </ion-item>
   <button (click)="register()" ion-button>Join Barycentre!</button>
 </ion-content>
