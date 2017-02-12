@@ -39,17 +39,16 @@ export class LoginPage {
   }
 }
 
-/*      .then(function(response) {
-  window.localStorage['authToken'] = response.data.token;
-}, function(error) {
-  alert('Incorrect password - please try again.')
-  console.log(error);
-});
-
-let alert = this.alertCtrl.create({
-  title: 'It works bitch!',
-  subTitle: 'email: ' + this.logData.email + '  password: ' + this.logData.password,
-  buttons: ['OK']
-});
-alert.present();
-*/
+// .then(function(response) {
+//   window.localStorage['authToken'] = response.data.token;
+// }, function(error) {
+//   alert('Incorrect password - please try again.')
+//   console.log(error);
+// });
+//
+// let alert = this.alertCtrl.create({
+//   title: 'It works bitch!',
+//   subTitle: 'email: ' + this.logData.email + '  password: ' + this.logData.password,
+//   buttons: ['OK']
+// });
+// alert.present();
