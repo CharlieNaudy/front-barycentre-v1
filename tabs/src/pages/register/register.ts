@@ -17,7 +17,6 @@ export class RegisterPage {
   lastName: string;
   address: string;
   email: string;
-  password: string;
   password1: string;
   password2: string;
 
@@ -32,7 +31,7 @@ export class RegisterPage {
       let alert = this.alertCtrl.create({ title: 'Erreur', subTitle: 'Vous devez choisir un mot de passe', buttons: ['OK'] });
       alert.present();
     } else if (this.password1 === this.password2) {
-      console.log('prout');
+      console.log('Entered the loop !');
       this.http.post('https://myApi/api/v1/register', {
         firstName: this.firstName,
         lastName: this.lastName,
