@@ -19,7 +19,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) { }
 
   login() {
-    this.http.post('https://myApi/api/v1/authenticate', { email: this.email, password: this.password }, function(messageJson) {
+    this.http.post('https://localhost:3000/users/login', { email: this.email, password: this.password }, function(messageJson) {
       if (messageJson.error) {
         let alert = this.alertCtrl.create({ title: 'Erreur', subTitle: messageJson.error, buttons: ['OK'] });
         alert.present();
