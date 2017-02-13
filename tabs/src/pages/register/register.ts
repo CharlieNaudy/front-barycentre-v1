@@ -32,7 +32,7 @@ export class RegisterPage {
       alert.present();
     } else if (this.password1 === this.password2) {
       console.log('Entered the loop !');
-      this.http.post('https://myApi/api/v1/register', {
+      this.http.post('http://localhost:3000/users', {
         firstName: this.firstName,
         lastName: this.lastName,
         address: this.address,
