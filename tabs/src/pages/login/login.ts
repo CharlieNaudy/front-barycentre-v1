@@ -19,18 +19,22 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) { }
 
   login() {
-    this.http.post('https://localhost:3000/users/login', { email: this.email, password: this.password }, function(messageJson) {
+    console.log("prout");
+    this.http.post('http://localhost:3000/users/login', { email: this.email, password: this.password }, function(messageJson) {
       if (messageJson.error) {
+        console.log("prout2");
         let alert = this.alertCtrl.create({ title: 'Erreur', subTitle: messageJson.error, buttons: ['OK'] });
         alert.present();
       }
       else if (messageJson.token) {
+        console.log("prout3");
         window.localStorage['login'] = this.email;
         window.localStorage['authToken'] = messageJson.token;
         let alert = this.alertCtrl.create({ title: 'Succès', subTitle: 'Connexion réussie', buttons: ['OK'] });
         alert.present();
         this.navCtrl.setRoot(TabsPage);
       }
+      else console.log("prout4");
     })
   }
 
