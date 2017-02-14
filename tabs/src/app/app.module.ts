@@ -8,6 +8,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 
+import { HttpModule, JsonpModule } from '@angular/http'; // tuto angular
+
 @NgModule({
   declarations: [
     MyApp,
