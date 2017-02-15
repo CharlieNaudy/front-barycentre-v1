@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { FriendsPage } from '../pages/friends/friends';
 
 import { HttpModule, JsonpModule } from '@angular/http'; // tuto angular
 
@@ -15,10 +16,11 @@ import { HttpModule, JsonpModule } from '@angular/http'; // tuto angular
     MyApp,
     AboutPage,
     ContactPage,
+    FriendsPage,
     HomePage,
-    TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    TabsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -28,11 +30,13 @@ import { HttpModule, JsonpModule } from '@angular/http'; // tuto angular
     MyApp,
     AboutPage,
     ContactPage,
+    FriendsPage,
     HomePage,
-    TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    TabsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
+
 export class AppModule {}
