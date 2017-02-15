@@ -7,7 +7,7 @@
 
 <ion-content padding>
 
-  <h2>Welcome to Barycentre!</h2>
+  <h2 style="text-align : center">Join us !</h2>
 
   <ion-item>
     <ion-label floating>First Name</ion-label>
@@ -20,7 +20,7 @@
   </ion-item>
 
   <ion-item>
-    <ion-label floating>Address (you'll be able to change later!)</ion-label>
+    <ion-label floating>Address (you'll be able to change later !)</ion-label>
     <ion-input type="text" [(ngModel)]="address"></ion-input>
   </ion-item>
 
@@ -39,5 +39,5 @@
     <ion-input type="password" [(ngModel)]="password2"></ion-input>
   </ion-item>
 
-  <button (click)="register()" ion-button>Join Barycentre !</button>
+  <button block (click)="register()" ion-button>Join Barycentre !</button>
 </ion-content>
