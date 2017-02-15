@@ -9,8 +9,9 @@ import { RegisterPage } from '../register/register';
 // https://www.metaltoad.com/blog/angular-2-using-http-service-write-data-api
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-
 import 'rxjs/add/operator/map';
+
+import { SecureStorage } from 'ionic-native';
 
 @Component({
   selector: 'page-login',
@@ -22,20 +23,26 @@ export class LoginPage {
   email: string;
   password: string;
   url: string;
+  secureStorage: SecureStorage;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) {
     this.url = 'http://localhost:3000/users/login';
+    this.secureStorage = new SecureStorage();
+    this.secureStorage.create('Secure storage').then(
+      () => console.log('Storage is ready!'),
+      error => console.log(error)
+   );
   }
 
-  postLogin() {
-    return this.http.post(this.url, {
-      email: this.email,
-      password: this.password
-    }).map((res:Response) => res.json());
+  createStorage() {
+    this.secureStorage.create('Secure storage')
+     .then(
+       () => console.log('Storage is ready!'),
+       error => console.log(error)
+    );
   }
 
   login() {
-    //this.postLogin()
     return this.http.post(this.url, {
       email: this.email,
       password: this.password
@@ -46,6 +53,7 @@ export class LoginPage {
       } else if (messageJson.token) {
         window.localStorage['login'] = this.email;
         window.localStorage['token'] = messageJson.token;
+        this.createStorage();
         let alert = this.alertCtrl.create({ title: 'Login', subTitle: 'Welcome to Barycentre !', buttons: ['OK'] });
         alert.present();
         this.navCtrl.setRoot(TabsPage);
