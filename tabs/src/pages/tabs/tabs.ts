@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { ContactPage } from '../contact/contact';
+import { FriendsPage } from '../friends/friends';
 import { LoginPage } from '../login/login';
 import { MeetingsPage } from '../meetings/meetings';
 import { SettingsPage } from '../settings/settings';
@@ -16,7 +16,7 @@ export class TabsPage {
   // should be each tab's root Page
 
   tab1Root: any = MeetingsPage;
-  tab2Root: any = ContactPage;
+  tab2Root: any = FriendsPage;
   tab3Root: any = SettingsPage;
 
   constructor(public navCtrl: NavController) { }
