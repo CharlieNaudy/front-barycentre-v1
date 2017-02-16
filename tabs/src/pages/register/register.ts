@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+// TODO : implement native storage
+// --> uncomment lines in the constructor
+// --> uncomment line in register() method
+// TODO : replace angular Http methods by Ionic v2 HTTP methods
 
+import { AlertController } from 'ionic-angular';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
+import { SecureStorage } from 'ionic-native';
+
 
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-import { SecureStorage } from 'ionic-native';
+
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-register',
@@ -83,7 +89,7 @@ export class RegisterPage {
             buttons: ['OK']
           });
           alert.present();
-          this.navCtrl.setRoot(TabsPage);
+          this.navCtrl.push(TabsPage, {}, { animate: false });
         } else {
           let alert = this.alertCtrl.create({
             title: 'Error',

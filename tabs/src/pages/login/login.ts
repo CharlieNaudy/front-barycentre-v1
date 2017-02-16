@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+// TODO : implement native storage
+// --> uncomment lines in the constructor
+// --> uncomment line in login() method
+// TODO : replace angular Http methods by Ionic v2 HTTP methods
 
+import { AlertController } from 'ionic-angular';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
-import { RegisterPage } from '../register/register';
+import { SecureStorage } from 'ionic-native';
 
 // https://scotch.io/tutorials/angular-2-http-requests-with-observables
 // https://www.metaltoad.com/blog/angular-2-using-http-service-write-data-api
@@ -11,7 +14,8 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-import { SecureStorage } from 'ionic-native';
+import { RegisterPage } from '../register/register';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-login',
@@ -24,7 +28,6 @@ export class LoginPage {
   secureStorage: SecureStorage;
   email: string;
   password: string;
-
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) {
     this.url = 'http://localhost:3000/users/login';
@@ -48,6 +51,12 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
 
+  ionViewDidLoad()  {
+    if (window.localStorage['userId'] && window.localStorage['token']) {
+      this.navCtrl.push(TabsPage, {}, { animate: false });
+    }
+  }
+
   login() {
     this.http.post(this.url, {
       email: this.email,
@@ -64,13 +73,7 @@ export class LoginPage {
         window.localStorage['userId'] = messageJson.userId;
         window.localStorage['token'] = messageJson.token;
         // this.createStorage();
-        let alert = this.alertCtrl.create({
-          title: 'Login',
-          subTitle: 'Welcome to Barycentre !',
-          buttons: ['OK']
-        });
-        alert.present();
-        this.navCtrl.setRoot(TabsPage);
+        this.navCtrl.push(TabsPage, {}, { animate: false });
       } else {
         let alert = this.alertCtrl.create({
           title: 'Error',
