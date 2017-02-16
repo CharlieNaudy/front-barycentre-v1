@@ -2,7 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { ContactPage } from '../pages/contact/contact';
 import { FriendsPage } from '../pages/friends/friends';
 import { LoginPage } from '../pages/login/login';
 import { MeetingsPage } from '../pages/meetings/meetings';
@@ -15,7 +14,6 @@ import { HttpModule, JsonpModule } from '@angular/http'; // tuto angular
 @NgModule({
   declarations: [
     MyApp,
-    ContactPage,
     FriendsPage,
     LoginPage,
     MeetingsPage,
@@ -29,7 +27,6 @@ import { HttpModule, JsonpModule } from '@angular/http'; // tuto angular
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ContactPage,
     FriendsPage,
     LoginPage,
     MeetingsPage,

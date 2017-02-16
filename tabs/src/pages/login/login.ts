@@ -15,10 +15,6 @@ import 'rxjs/add/operator/map';
 import { RegisterPage } from '../register/register';
 import { TabsPage } from '../tabs/tabs';
 
-
-// https://scotch.io/tutorials/angular-2-http-requests-with-observables
-// https://www.metaltoad.com/blog/angular-2-using-http-service-write-data-api
-
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -53,7 +49,7 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
 
-  ionViewDidLoad()  {
+  ionViewDidLoad() {
     if (window.localStorage['userId'] && window.localStorage['token']) {
       this.navCtrl.push(TabsPage, {}, { animate: false });
     }

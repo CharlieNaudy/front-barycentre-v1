@@ -1,13 +1,5 @@
-// Notice I'm not importing NavController
-// Instead I'm importing App, which gives me access to
-// app-level properties, such as the root NavController
 import { App } from 'ionic-angular';
 import { Component } from '@angular/core';
-
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app.module';
-
 
 import { LoginPage } from '../login/login';
 

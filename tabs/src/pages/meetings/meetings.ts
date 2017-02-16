@@ -9,5 +9,4 @@ import { NavController, NavParams } from 'ionic-angular';
 export class MeetingsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) { }
-
 }

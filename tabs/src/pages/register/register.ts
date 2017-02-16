@@ -2,17 +2,17 @@
 // --> uncomment lines in the constructor
 // --> uncomment line in register() method
 // TODO : replace angular Http methods by Ionic v2 HTTP methods
+// TODO : check passwords equality dynamically
+// TODO : deactivate "register" button while all fields are not completed
 
 import { AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SecureStorage } from 'ionic-native';
 
-
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-
 
 import { TabsPage } from '../tabs/tabs';
 
@@ -26,10 +26,10 @@ export class RegisterPage {
   url: string;
   secureStorage: SecureStorage;
   email: string;
-  password1: string; // TODO: vérifier
-  password2: string; // l'égalité en dynamique
-  firstName: string; // TODO : désactiver le boutton "register"
-  lastName: string;  // tant que tous les champs ne sont pas remplis
+  password1: string;
+  password2: string;
+  firstName: string;
+  lastName: string;
   address: string;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) {
