@@ -8,14 +8,16 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SecureStorage } from 'ionic-native';
 
-// https://scotch.io/tutorials/angular-2-http-requests-with-observables
-// https://www.metaltoad.com/blog/angular-2-using-http-service-write-data-api
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 import { RegisterPage } from '../register/register';
 import { TabsPage } from '../tabs/tabs';
+
+
+// https://scotch.io/tutorials/angular-2-http-requests-with-observables
+// https://www.metaltoad.com/blog/angular-2-using-http-service-write-data-api
 
 @Component({
   selector: 'page-login',
