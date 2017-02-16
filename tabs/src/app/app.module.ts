@@ -1,25 +1,26 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
+
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { LoginPage } from '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
 import { FriendsPage } from '../pages/friends/friends';
+import { LoginPage } from '../pages/login/login';
+import { MeetingsPage } from '../pages/meetings/meetings';
+import { RegisterPage } from '../pages/register/register';
+import { SettingsPage } from '../pages/settings/settings';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { HttpModule, JsonpModule } from '@angular/http'; // tuto angular
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
     ContactPage,
     FriendsPage,
-    HomePage,
     LoginPage,
+    MeetingsPage,
     RegisterPage,
+    SettingsPage,
     TabsPage
   ],
   imports: [
@@ -28,12 +29,12 @@ import { HttpModule, JsonpModule } from '@angular/http'; // tuto angular
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
     ContactPage,
     FriendsPage,
-    HomePage,
     LoginPage,
+    MeetingsPage,
     RegisterPage,
+    SettingsPage,
     TabsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]

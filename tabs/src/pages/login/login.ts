@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+// TODO : implement native storage
+// --> uncomment lines in the constructor
+// --> uncomment line in login() method
+// TODO : replace angular Http methods by Ionic v2 HTTP methods
 
+import { AlertController } from 'ionic-angular';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
-import { RegisterPage } from '../register/register';
+import { SecureStorage } from 'ionic-native';
 
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-import { SecureStorage } from 'ionic-native';
+import { RegisterPage } from '../register/register';
+import { TabsPage } from '../tabs/tabs';
 
 
 // https://scotch.io/tutorials/angular-2-http-requests-with-observables
@@ -22,13 +26,14 @@ import { SecureStorage } from 'ionic-native';
 
 export class LoginPage {
 
-  email: string;
-  password: string;
   url: string;
   secureStorage: SecureStorage;
+  email: string;
+  password: string;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) {
     this.url = 'http://localhost:3000/users/login';
+    // POUR UTILISER LE SECURE STORAGE NATIF
     // this.secureStorage = new SecureStorage();
     // this.secureStorage.create('Secure storage').then(
     //   () => console.log('Storage is ready!'),
@@ -44,30 +49,41 @@ export class LoginPage {
       );
   }
 
+  getRegister() {
+    this.navCtrl.push(RegisterPage);
+  }
+
+  ionViewDidLoad()  {
+    if (window.localStorage['userId'] && window.localStorage['token']) {
+      this.navCtrl.push(TabsPage, {}, { animate: false });
+    }
+  }
+
   login() {
-    return this.http.post(this.url, {
+    this.http.post(this.url, {
       email: this.email,
       password: this.password
     }).map((res: Response) => res.json()).subscribe(messageJson => {
       if (messageJson.error) {
-        let alert = this.alertCtrl.create({ title: 'Error', subTitle: messageJson.error, buttons: ['OK'] });
+        let alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: messageJson.error,
+          buttons: ['OK']
+        });
         alert.present();
       } else if (messageJson.token && messageJson.userId) {
         window.localStorage['userId'] = messageJson.userId;
         window.localStorage['token'] = messageJson.token;
-        window.localStorage['login'] = this.email;
         // this.createStorage();
-        let alert = this.alertCtrl.create({ title: 'Login', subTitle: 'Welcome to Barycentre !', buttons: ['OK'] });
-        alert.present();
-        this.navCtrl.setRoot(TabsPage);
+        this.navCtrl.push(TabsPage, {}, { animate: false });
       } else {
-        let alert = this.alertCtrl.create({ title: 'Error', subTitle: 'Something went wrong.', buttons: ['OK'] });
+        let alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: 'Something went wrong.',
+          buttons: ['OK']
+        });
         alert.present();
       }
     });
-  }
-
-  getRegister() {
-    this.navCtrl.push(RegisterPage);
   }
 }
