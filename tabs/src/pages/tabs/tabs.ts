@@ -4,6 +4,7 @@ import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
+import { FriendsPage } from '../friends/friends';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -17,7 +18,7 @@ export class TabsPage {
 
   tab1Root: any = HomePage;
   tab2Root: any = AboutPage;
-  tab3Root: any = ContactPage;
+  tab3Root: any = FriendsPage;
 
   constructor(public navCtrl: NavController) { }
 
