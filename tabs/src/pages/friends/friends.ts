@@ -58,10 +58,6 @@ myfriends(){
       	//this.friends.push();
       }
         //let parsed = JSON.parse(messageJson.friends);
-        else {
-        	let alert = this.alertCtrl.create({ title: 'Error', subTitle: 'Something went wrong.', buttons: ['OK'] });
-        	alert.present();
-        }
     });
 }
 
@@ -103,14 +99,16 @@ addFriend() {
 		{
 			text: 'Confirm',
 			handler: data => {
-				if (1 === 1/* Friend's name already exists */) {
+				if (0/* Friend's name already exists */) {
 
 				}
-				else if (1===1 /* All fields have not been completed*/) {
+				else if (0 /* All fields have not been completed*/) {
 
 				}
 				else {
-					this.http.post('http://localhost:3000/friends/', {name: data.name, address: data.address, user_id: window.localStorage['user_id']}).map((res: Response) => res.json()).subscribe(messageJson => {
+					console.log(window.localStorage['user_id']);
+					console.log('prout');
+					this.http.post('http://localhost:3000/friends', {name: data.name, address: data.address, user_id: 1}).map((res: Response) => res.json()).subscribe(messageJson => {
 						if (messageJson.error) {
 							let alert2 = this.alertCtrl.create({ title: 'Error', subTitle: messageJson.error, buttons: ['OK'] });
 							alert2.present();
