@@ -33,13 +33,15 @@ export class RegisterPage {
   address: string;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) {
+
+    this.url = 'http://localhost:3000/users';
+
+    this.address = "";
     this.email = "";
-    this.password1 = "";
-    this.password2 = "";
     this.firstName = "";
     this.lastName = "";
-    this.address = "";
-    this.url = 'http://localhost:3000/users';
+    this.password1 = "";
+    this.password2 = "";
     // POUR UTILISER LE SECURE STORAGE NATIF
     // this.secureStorage = new SecureStorage();
     // this.secureStorage.create('Secure storage').then(
@@ -89,7 +91,9 @@ export class RegisterPage {
             buttons: ['OK']
           });
           alert.present();
-          this.navCtrl.push(TabsPage, {}, { animate: false });
+          this.navCtrl.push(TabsPage, {}, {
+            animate: false
+          });
         } else {
           let alert = this.alertCtrl.create({
             title: 'Error',
