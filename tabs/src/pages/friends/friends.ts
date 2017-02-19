@@ -28,7 +28,7 @@ export class FriendsPage {
   constructor(public alertCtrl: AlertController, public app: App, public http: Http, public navCtrl: NavController) {
 
     this.userId = window.localStorage['userId'];
-    this.url = 'http://localhost:3000/friends/';
+    this.url = 'http://api-barycentre.herokuapp.com/friends/';
 
     this.friends = [];
     this.ids = [];
