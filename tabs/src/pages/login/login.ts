@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SecureStorage } from 'ionic-native';
 
-// import { Http, Response } from '@angular/http';
-// import { Observable } from 'rxjs/Rx';
-// import 'rxjs/add/operator/map';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 import { HTTP } from 'ionic-native';
 
 import { RegisterPage } from '../register/register';
@@ -29,7 +29,7 @@ export class LoginPage {
   email: string;
   password: string;
 
-  constructor(public alertCtrl: AlertController, /*public http: Http,*/ public navCtrl: NavController, ) {
+  constructor(public alertCtrl: AlertController, public http: Http, public navCtrl: NavController, ) {
 
     // window.localStorage['url'] = 'http://api-barycentre.herokuapp.com/';
     window.localStorage['url'] = 'http://localhost:3000/';
@@ -61,74 +61,74 @@ export class LoginPage {
     }
   }
 
-  // login() {
-  //   this.http.post(this.url, {
-  //     email: this.email,
-  //     password: this.password
-  //   }).map((res: Response) => res.json()).subscribe(messageJson => {
-  //     if (messageJson.error) {
-  //       let alert = this.alertCtrl.create({
-  //         title: 'Error',
-  //         subTitle: messageJson.error,
-  //         buttons: ['OK']
-  //       });
-  //       alert.present();
-  //     } else if (messageJson.token && messageJson.userId) {
-  //       window.localStorage['userId'] = messageJson.userId;
-  //       window.localStorage['token'] = messageJson.token;
-  //       // this.createStorage();
-  //       this.navCtrl.push(TabsPage, {}, { animate: false });
-  //     } else {
-  //       let alert = this.alertCtrl.create({
-  //         title: 'Error',
-  //         subTitle: 'Something went wrong.',
-  //         buttons: ['OK']
-  //       });
-  //       alert.present();
-  //     }
-  //   });
-  // }
-
   login() {
-    HTTP.post(this.url, {
+    this.http.post(this.url, {
       email: this.email,
       password: this.password
-    }, {})
-      .then(data => {
-        let headers = data.headers;
-        let body = JSON.parse(data.data);
-        let status = data.status;
-        if (body.error) {
-          let alert = this.alertCtrl.create({
-            title: 'Error',
-            subTitle: body.error,
-            buttons: ['OK']
-          });
-          alert.present();
-        } else if (body.token && body.userId) {
-          window.localStorage['userId'] = body.userId;
-          window.localStorage['token'] = body.token;
-          // this.createStorage();
-          this.navCtrl.push(TabsPage, {}, { animate: false });
-        } else {
-          let alert = this.alertCtrl.create({
-            title: 'Error',
-            subTitle: 'Something went wrong.',
-            buttons: ['OK']
-          });
-          alert.present();
-        }
-      })
-      .catch(error => {
+    }).map((res: Response) => res.json()).subscribe(messageJson => {
+      if (messageJson.error) {
+        let alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: messageJson.error,
+          buttons: ['OK']
+        });
+        alert.present();
+      } else if (messageJson.token && messageJson.userId) {
+        window.localStorage['userId'] = messageJson.userId;
+        window.localStorage['token'] = messageJson.token;
+        // this.createStorage();
+        this.navCtrl.push(TabsPage, {}, { animate: false });
+      } else {
         let alert = this.alertCtrl.create({
           title: 'Error',
           subTitle: 'Something went wrong.',
           buttons: ['OK']
         });
         alert.present();
-        console.log(error.status);
-        console.log(error.error); // error message as string
-        console.log(error.headers);
-      });
+      }
+    });
   }
+
+  // login() {
+  //   HTTP.post(this.url, {
+  //     email: this.email,
+  //     password: this.password
+  //   }, {})
+  //     .then(data => {
+  //       let headers = data.headers;
+  //       let body = JSON.parse(data.data);
+  //       let status = data.status;
+  //       if (body.error) {
+  //         let alert = this.alertCtrl.create({
+  //           title: 'Error',
+  //           subTitle: body.error,
+  //           buttons: ['OK']
+  //         });
+  //         alert.present();
+  //       } else if (body.token && body.userId) {
+  //         window.localStorage['userId'] = body.userId;
+  //         window.localStorage['token'] = body.token;
+  //         // this.createStorage();
+  //         this.navCtrl.push(TabsPage, {}, { animate: false });
+  //       } else {
+  //         let alert = this.alertCtrl.create({
+  //           title: 'Error',
+  //           subTitle: 'Something went wrong here.',
+  //           buttons: ['OK']
+  //         });
+  //         alert.present();
+  //       }
+  //     })
+  //     .catch(error => {
+  //       let alert = this.alertCtrl.create({
+  //         title: 'Error',
+  //         subTitle: 'Something went wrong there.',
+  //         buttons: ['OK']
+  //       });
+  //       alert.present();
+  //       console.log(error.status);
+  //       console.log(error.error); // error message as string
+  //       console.log(error.headers);
+  //     });
+  // }
 }
