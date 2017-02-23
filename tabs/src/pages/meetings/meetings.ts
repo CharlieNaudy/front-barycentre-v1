@@ -8,5 +8,10 @@ import { NavController, NavParams } from 'ionic-angular';
 
 export class MeetingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  url: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.url = window.localStorage['url'] + 'meetings/user/' + window.localStorage['userId'] + '/';
+  }
 }

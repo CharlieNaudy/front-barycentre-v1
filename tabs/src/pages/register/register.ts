@@ -34,7 +34,7 @@ export class RegisterPage {
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) {
 
-    this.url = 'http://api-barycentre.herokuapp.com/users';
+    this.url = window.localStorage['url'] + 'users/';
 
     this.address = "";
     this.email = "";
