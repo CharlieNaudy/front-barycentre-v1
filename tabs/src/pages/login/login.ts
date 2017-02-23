@@ -31,8 +31,8 @@ export class LoginPage {
 
   constructor(public alertCtrl: AlertController, public http: Http, public navCtrl: NavController, ) {
 
-    // window.localStorage['url'] = 'http://api-barycentre.herokuapp.com/';
-    window.localStorage['url'] = 'http://localhost:3000/';
+    window.localStorage['url'] = 'http://api-barycentre.herokuapp.com/';
+    // window.localStorage['url'] = 'http://localhost:3000/';
     this.url = window.localStorage['url'] + 'users/login/';
 
     // POUR UTILISER LE SECURE STORAGE NATIF

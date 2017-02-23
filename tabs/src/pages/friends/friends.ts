@@ -1,10 +1,6 @@
 import { AlertController } from 'ionic-angular';
-import { App } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { NavController} from 'ionic-angular';
-
-import { RegisterPage } from '../register/register';
-import { TabsPage } from '../tabs/tabs';
 
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -20,12 +16,11 @@ export class FriendsPage {
   url: string;
   userId: string;
 
-  data: any;
   friends: any;
   ids: any;
   names: any;
 
-  constructor(public alertCtrl: AlertController, public app: App, public http: Http, public navCtrl: NavController) {
+  constructor(public alertCtrl: AlertController, public http: Http, public navCtrl: NavController) {
 
     this.userId = window.localStorage['userId'];
     this.url = window.localStorage['url'] + 'friends/';
@@ -34,7 +29,7 @@ export class FriendsPage {
     this.ids = [];
     this.names = [];
 
-    this.myfriends();
+    this.myFriends();
     // this.http.get(this.url).subscribe(friends => this.data);
     // parsed = JSON.parse(this.data);
     // for (var x in parsed){
@@ -43,7 +38,7 @@ export class FriendsPage {
 
   }
 
-  myfriends() {
+  myFriends() {
     this.http.get(this.url + 'users/' + this.userId).map((res: Response) => res.json()).subscribe(messageJson => {
       if (messageJson.error) {
         let alert = this.alertCtrl.create({
@@ -74,7 +69,7 @@ export class FriendsPage {
         alert.present();
       }
       else {
-        this.myfriends();
+        this.myFriends();
       }
     });
   }
@@ -127,7 +122,7 @@ export class FriendsPage {
                     buttons: ['OK']
                   });
                   alert3.present();
-                  this.myfriends();
+                  this.myFriends();
                 }
               });
             }
